@@ -1,0 +1,44 @@
+CREATE DATABASE DemoAPI; USE
+    DemoAPI;
+ALTER
+    DATABASE DemoAPI DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    -- Create table
+-- Table Product
+CREATE TABLE Product (
+	IdPro VARCHAR(50) PRIMARY KEY,
+	NamePro VARCHAR(100) NOT NULL,
+	IdCategory INT NOT NULL,
+	Price INT NOT NULL,
+	Quantity INT NOT NULL,
+	Img VARCHAR(50),
+	Description TEXT,
+	Status BOOLEAN DEFAULT 1 NOT NULL
+);
+-- Table Category
+CREATE TABLE Category(
+	IdCategory INT AUTO_INCREMENT PRIMARY KEY,
+	NameCategory VARCHAR(100) NOT NULL,
+	Status BOOLEAN DEFAULT 1 NOT NULL
+);
+-- Board link
+-- Product with Category
+ALTER TABLE Product ADD	CONSTRAINT FK_PRODUCT_CATEGORY FOREIGN KEY (IdCategory) REFERENCES Category(IdCategory);
+
+-- Insert data into Category
+INSERT INTO Category(NameCategory) VALUES ('VACUUM CLEANER');
+INSERT INTO Category(NameCategory) VALUES ('REFRIGERATOR');
+INSERT INTO Category(NameCategory) VALUES ('WASHING MACHINE');
+INSERT INTO Category(NameCategory) VALUES ('LAPTOP');
+INSERT INTO Category(NameCategory) VALUES ('ELECTRIC COOKER');
+INSERT INTO Category(NameCategory) VALUES ('BLENDER');
+
+-- Insert data into Product
+INSERT INTO Product (IdPro, NamePro, IdCategory, Price, Quantity, Img, Description) VALUES ('LT1', '30300_asus_x509fj_ej158t_1', 4,  16900000, 20, 'LT1.jpg', '{"CPU": " Intel® Core™ i7-8565U", "RAM": "4GB DDR4","HARD DRIVE": "512G PCIE SSD}", "VGA": "Nvidia GeForce MX230 2GB"}');
+INSERT INTO Product (IdPro, NamePro, IdCategory,  Price, Quantity, Img, Description) VALUES ('LT2', 'Laptop Dell Vostro 3480 70183779', 4, 14000000, 50, 'LT2.jpg', '{"CPU": "Intel® Core™ i5 8265U", "RAM": "8GB DDR4 2666MHz", "HARD DRIVE": "HDD: 1TB", "VGA": "Intel® UHD Graphics 620"}');
+INSERT INTO Product (IdPro, NamePro, IdCategory,  Price, Quantity, Img, Description) VALUES ('LT3', 'Dell G7 17 7790 Gaming', 4,  31900000, 50, 'LT3.jpg', '{"CPU": " 9th Gen Intel® Core™ i7 9750H Processor 2.60 GHz", "RAM": "6GB DDR4 2666MHz","HARD DRIVE":"SSD 512GB","VGA":"6GB GDDR5 video memory NVIDIA® GeForce® GTX 1660"}');
+INSERT INTO Product (IdPro, NamePro, IdCategory, Price, Quantity, Img, Description) VALUES ('LT4', 'Laptop Asus VivoBook', 4,  15990000, 50, 'LT4.jpg', '{"CPU":"Intel Core i5-8265U","RAM":"8GB DDr4 Bus 2400Mhz","HARD DRIVE":"1000GB + 16GB optane","VGA":"Intel UHD 620M "}');
+INSERT INTO Product (IdPro, NamePro, IdCategory,  Price, Quantity, Img, Description) VALUES ('LT5', 'Haier S1 HR-13M/Celeron N3350', 4,  5000000, 50, 'LT5.jpg','{"CPU":"Intel, Celeron","RAM":"3 GB, DDR3L","HARD DRIVE":"eMMC, 32 GB"},"VGA":"Intel® HD Graphics 500"');
+INSERT INTO Product (IdPro, NamePro, IdCategory, Price, Quantity, Img, Description) VALUES ('R5', 'Refrigerator Aqua AQR-IP285AB', 2,  8000000, 50, 'TL5.jpg', '{"Form Facter":"Freezer_top","Capacity":"288L","Technology":"inverter"}');
+INSERT INTO Product (IdPro, NamePro, IdCategory,  Price, Quantity, Img, Description) VALUES ('R6', 'Refrigerator Sharp SJ-GF60A-T', 2,  8000000, 50, 'TL6.jpg', '{"Form Facter":"multi door","Capacity":"470L","Technology":"inverter"}');
+INSERT INTO Product (IdPro, NamePro, IdCategory,  Price, Quantity, Img, Description) VALUES ('R7', 'Refrigerator LG GR-P247JS', 2,  31400000, 50, 'TL7.jpg', '{"Form Facter":"door in door","Capacity":"601L","Technology":"inverter"}');
+
